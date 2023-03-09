@@ -2,6 +2,7 @@ package com.example.juegogeolocalizacion
 
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -17,7 +18,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -28,11 +31,35 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mapFragment: SupportMapFragment
     private var locationGranted = false
 
+
+    //region tesosros
+
+    var tesoro1 = Location("tesoro1")
+    var tesoro2 = Location("tesoro2")
+    var tesoro3 = Location("tesoro3")
+
+    init {
+        tesoro1.latitude = 42.23699434605001
+        tesoro1.longitude = -8.714858173423254
+
+        tesoro2.latitude = 42.23478669846102
+        tesoro2.longitude = -8.719721794117492
+
+        tesoro3.latitude = 42.241187652778876
+        tesoro3.longitude = -8.72290017054465
+
+    }
+
+    private val locations = listOf(tesoro1, tesoro2, tesoro3)
+
+    //endregion
+
+
     //Minimo tiempo para updates en Milisegundos
     private val minTimeUpdate = (1000 * 5).toLong() // 5 segundos
 
     //Minima distancia para updates en metros.
-    private val minDistanceUpdate = 1.5 .toFloat() // 1.5 metros
+    private val minDistanceUpdate = 1.5.toFloat() // 1.5 metros
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,7 +101,58 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 .build()
             mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
+            searchTreasure(location)
+
         }
+
+        private fun searchTreasure(location: Location) {
+
+            var distancia:Float
+
+            for (location2 in locations) {
+
+                distancia = location.distanceTo(location2)
+
+                if (distancia < 3) {
+                    mMap.clear();
+                    locations.drop(locations.indexOf(location2))
+
+                } else if (distancia < 10) {
+                    mMap.clear();
+
+                    mMap.addMarker(
+                        MarkerOptions()
+                            .position(LatLng(location2.latitude, location2.longitude))
+                            .title("Tesoro")
+                    )
+
+
+                } else if (distancia < 100) {
+                    mMap.clear();
+                    drawCircle(
+                        LatLng(
+                            location2.latitude ,
+                            location2.longitude
+                        ), 100.0
+                    )
+
+                }
+
+            }
+
+
+        }
+
+
+        private fun drawCircle(point: LatLng, radius: Double) {
+            val circleOptions = CircleOptions()
+            circleOptions.center(point)
+            circleOptions.radius(radius)
+            circleOptions.strokeColor(Color.RED)
+            circleOptions.strokeWidth(3F)
+            mMap.addCircle(circleOptions)
+        }
+
 
         override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
 
@@ -134,7 +212,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         android.Manifest.permission.ACCESS_COARSE_LOCATION,
                         false
                     ) -> {
-                        // Only approximate location access granted.
+                        Toast.makeText(this, "La localizacion esta activada!", Toast.LENGTH_SHORT)
+                            .show()
                     }
 
                     else -> {
