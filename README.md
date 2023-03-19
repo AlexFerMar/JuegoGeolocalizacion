@@ -1,8 +1,8 @@
 # ¡Bienvenido al emocionante juego de búsqueda del tesoro!
 
-En este juego, tendrás la oportunidad de explorar la hermosa ciudad de Vigo mientras buscas tesoros ocultos. Todo lo que necesitas es descargar nuestra aplicación de búsqueda del tesoro y comezar tu aventura! 
+En este juego, tendrás la oportunidad de explorar la hermosa ciudad de Vigo mientras buscas tesoros ocultos. Todo lo que necesitas es descargar nuestra aplicación de búsqueda del tesoro y comenzar tu aventura! 
 
-Tu objetivo sera encontrar las distintas localizaciones ocultas dentro de la ciudad. Este juego es ideal para jugar solo o con amigos, embarcate en esta aventura con tus amigos y descubre istintas localizaciones de la ciudad de Vigo!
+Tu objetivo será encontrar las distintas localizaciones ocultas dentro de la ciudad. Este juego es ideal para jugar solo o con amigos, embárcate en esta aventura con tus amigos y descubre distintas localizaciones de la ciudad de Vigo!
 
 
 ## Instrucciones
@@ -15,19 +15,19 @@ Este juego no cuenta con ninguna release asi que para jugarlo necesitaras tener 
 
 - Un dispositivo android 
 
-Para instalar la aplicacion descargue este reppositorio y abralo en android studio. Luego enchufe su dispositivo andorid y active la depuracion USB en las opciones de desarrollador (esto varia segun cada dispositivo, lo mas sencillo seria buscar "'nombre dispositivo' activar modo administrador"). Si android studio lee su dispositvo solo le queda un ultimo paso, vaya a "local.properties" e introduzca la API Key de google maps en el siguiente campo:
+Para instalar la aplicación descargué este repositorio y ábralo en Android Studio. Luego enchufe su dispositivo Android y active la depuración USB en las opciones de desarrollador (esto varía según cada dispositivo, lo más sencillo sería buscar “’nombre dispositivo’ activar modo administrador"). Si Android Studio lee su dispositivo solo le queda un último paso, vaya a “local.properties” e introduzca la API Key de Google Maps en el siguiente campo:
 
 ```
 MAPS_API_KEY="TU_API_KEY"
 ```
 
-Por ultimo, con el telefono conectado por usb, instale la aplicacion y disfrute de su busqueda del tesoro!
+Por último, con el teléfono conectado por USB, instale la aplicación y disfrute de su búsqueda del tesoro!
 
 ## Instrucciones
 
-Este necesita permisos de localizacion para poder determinar donde estas respecto a la marca del tesoro, si no concedes los permisos el juego no comenzara. Una vez concedidos los permisos se centrara el mapa sobre tu localizacion.
+Este necesita permisos de localización para poder determinar donde estás respecto a la marca del tesoro, si no concedes los permisos el juego no comenzará. Una vez concedidos los permisos se centrará el mapa sobre tu localización.
 
-El juego consistira en encontrar las distinatas marcas por la ciudad. Una vez te acerques lo sufuciente surgira un circulito resaltando el area donde esta la marca. Cuanto mas te acerques al area mas pequeño se hara el circulo. Una vez hayass alcanzado la marca esta desaparecera. Realiza esto con cada marca hasta completar todas las  localizaciones! 
+El juego consistirá en encontrar las distintas marcas por la ciudad. Una vez te acerques lo suficiente surgirá un círculo resaltando el área donde está la marca. Cuanto más te acerques al área más pequeño se hará el círculo. Una vez hayas alcanzado la marca, esta desaparecerá. Realiza esto con cada marca hasta completar todas las localizaciones!
 
 
 
@@ -38,7 +38,7 @@ El juego consistira en encontrar las distinatas marcas por la ciudad. Una vez te
 
 ## Emplea tus propias marcas!
 
-Una de las ventajas de tener acceso al codigo de la aplicacion es poder añadir tus propias marcas para que tus amigos realicen una busqueda del tesoro que tu has preparado!
+Una de las ventajas de tener acceso al código de la aplicación es poder añadir tus propias marcas para que tus amigos realicen una búsqueda del tesoro que tú has preparado!
 
 ```kotlin
 
@@ -62,7 +62,7 @@ Una de las ventajas de tener acceso al codigo de la aplicacion es poder añadir 
 
 ```
 
-En este trazo de codigo es donde se declaran los distintos puntos del tesoro. Para añadir tus propias localizaciones solo deberas crear una nueva "var tesoro" y dentro del init introducir la longitud y latitud que hayas obtenido en maps. Una vez este preparado tu punto del tesoro añadelo a la lista "locations" y ya se encargara el programa de todo lo demas. Prepara tu propia busqueda del tesoro y lleva a tus amigo de paso por tus lugares y comercios favoritos!
+En este trazo de código es donde se declaran los distintos puntos del tesoro. Para añadir tus propias localizaciones solo deberás crear una nueva "var tesoro" y dentro del init introducir la longitud y latitud que hayas obtenido en maps. Una vez este preparado tu punto del tesoro, añádelo a la lista "locations" y ya se encargará el programa de todo lo demás. Prepara tu propia búsqueda del tesoro y lleva a tus amigos de paso por tus lugares y comercios favoritos!
 
 
 
